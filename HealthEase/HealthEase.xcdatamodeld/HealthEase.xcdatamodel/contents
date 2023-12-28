@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Appointment" representedClassName="Appointment" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="doctorName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="speciality" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <relationship name="toUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="toAppointment" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="Favourite" representedClassName="Favourite" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <relationship name="toUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="toFavourite" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <relationship name="toAppointment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="toUser" inverseEntity="Appointment"/>
+        <relationship name="toFavourite" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Favourite" inverseName="toUser" inverseEntity="Favourite"/>
+    </entity>
+</model>
